@@ -49,7 +49,7 @@ const convertToMorse = (str) => {
        return morseCode[el] ? morseCode[el] : el;
     }).join("");
  };
- };
+
   let morse=convertToMorse(expr);
     let newString = morse.replaceAll('-', '11').replaceAll('.', '10');
     let arr=newString.split(' ');
