@@ -1,36 +1,54 @@
 const MORSE_TABLE = {
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G": "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--.."
+    '.-':     'a',
+    '-...':   'b',
+    '-.-.':   'c',
+    '-..':    'd',
+    '.':      'e',
+    '..-.':   'f',
+    '--.':    'g',
+    '....':   'h',
+    '..':     'i',
+    '.---':   'j',
+    '-.-':    'k',
+    '.-..':   'l',
+    '--':     'm',
+    '-.':     'n',
+    '---':    'o',
+    '.--.':   'p',
+    '--.-':   'q',
+    '.-.':    'r',
+    '...':    's',
+    '-':      't',
+    '..-':    'u',
+    '...-':   'v',
+    '.--':    'w',
+    '-..-':   'x',
+    '-.--':   'y',
+    '--..':   'z',
+    '.----':  '1',
+    '..---':  '2',
+    '...--':  '3',
+    '....-':  '4',
+    '.....':  '5',
+    '-....':  '6',
+    '--...':  '7',
+    '---..':  '8',
+    '----.':  '9',
+    '-----':  '0',
 };
+var morseCode = {}
+
+Object.entries(MORSE_TABLE).forEach(([key, value]) => {
+    morseCode[value.toUpperCase()] = key
+})
+
 
 function decode(expr) {
-  const convertToMorse = (str) => {
+const convertToMorse = (str) => {
     return str.toUpperCase().split("").map(el => {
-       return MORSE_TABLE[el] ? MORSE_TABLE[el] : el;
+       return morseCode[el] ? morseCode[el] : el;
     }).join("");
+ };
  };
   let morse=convertToMorse(expr);
     let newString = morse.replaceAll('-', '11').replaceAll('.', '10');
