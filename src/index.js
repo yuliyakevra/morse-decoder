@@ -47,16 +47,20 @@ function decode(expr) {
 const convertToMorse = (str) => {
     return str.toUpperCase().split("").map(el => {
        return morseCode[el] ? morseCode[el] : el;
-    }).join("");
+    }).join(" ");
  };
+ 
+  let morse=convertToMorse(expr)
 
-  let morse=convertToMorse(expr);
+ 
     let newString = morse.replaceAll('-', '11').replaceAll('.', '10');
+     console.log(newString);
     let arr=newString.split(' ');
+console.log(arr)
     function pad(arr) {
   for (i=0; i<arr.length; i++){
     if (arr[i].length < 10){
-         while (arr[i].length < 10) arr[i] =arr[i] + "0" ;
+         while (arr[i].length < 10) arr[i] ="0"+ arr[i];
     }
    if(arr[i].length > 10){
      arr[i]=arr[i].substring(0,9);
@@ -64,16 +68,17 @@ const convertToMorse = (str) => {
        }
   return arr;
     
-
 }
 
 let arr1=pad(arr);
 
+console.log(arr1)
 
 
 let result=arr1.join('');
 return result;
 }
+
 module.exports = {
     decode
 }
